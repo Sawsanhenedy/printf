@@ -5,6 +5,10 @@
 #include<unistd.h>
 #include<stdarg.h>
 #include<limits.h>
+#define PARA_INIT {0, 0, 0, 0, 0, 0, 0, 0, 0, 0} /* zero for each parameter */
+#define NULL_STRING "(null)"
+#define CONVERT_UNSIGNED
+#define CONVERT_LOWERCASE
 /**
  * struct para - structure of parameters
  * @plus_flag: in case a plus_flag is specified
@@ -39,8 +43,8 @@ unsigned int pre : 1;
 typedef struct specifier
 {
 char *speci;
-int (*f)(va_list, params_t *);
+int (*f)(va_list, para_t *);
 } specifier_t
 /* task 0: _printf.c */
 int _printf(const char *format, ...);
-/* functions */
+#endif /* MAIN_H */
