@@ -92,11 +92,4 @@ int numver_l(char *str, para_t *para);
 /* _put.c */
 int _put(char *str);
 int _putchar(int c);
-=======
-<<<<<<< HEAD
-/* functions */
-/*salma */
-=======
->>>>>>> bea5528504d817bb9a6d6d9cd8394681b20b4cab
 #endif /* MAIN_H */
->>>>>>> e6d8ba6b6f9f4caca921330ac7cfcbe6d78568a5
