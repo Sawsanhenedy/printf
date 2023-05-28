@@ -53,7 +53,6 @@ int (*f)(va_list, para_t *);
 } specifier_t;
 /*  _printf.c */
 int _printf(const char *format, ...);
-<<<<<<< HEAD
 /* para.c */
 void init_para(para_t *para, va_list a);
 /* str_field.c */
@@ -93,7 +92,3 @@ int numver_l(char *str, para_t *para);
 int _put(char *str);
 int _putchar(int c);
 #endif /* MAIN_H */
-<<<<<<< HEAD
->>>>>>>
-=======
->>>>>>> eb7a747fcf784e77e4b0cf24ad37b335af8755e4
