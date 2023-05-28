@@ -52,4 +52,4 @@ int _printf(const char *format, ...);
 /*salma */
 =======
 #endif /* MAIN_H */
->>>>>>> e6d8ba6b6f9f4caca921330ac7cfcbe6d78568a5
+>>>>>>>
