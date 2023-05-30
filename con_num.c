@@ -1,4 +1,5 @@
-include "main.h"
+#include "main.h"
+#include <stdarg.h>
 
 /**
  * print_hex - find format functions
@@ -13,12 +14,12 @@ int print_hex(va_list a, para_t *para)
 	char *st;
 
 	if (para->l_modi)
-		lo = (unsigned long)va_arg(ap, unsigned long);
+		lo = (unsigned long)va_arg(a, unsigned long);
 	else if (para->h_modi)
 		lo = (unsigned short int)va_arg(a, unsigned int);
 	else
 		lo = (unsigned int)va_arg(a, unsigned int);
-	st = convert(lo, 16, CONVERT_UNSIGNED, |  CONVERT_LOWERCASE, para);
+	st = convert(lo, 16, CONVERT_UNSIGNED | CONVERT_LOWERCASE, para);
 	if (para->hash_flag && lo)
 	{
 		*--st = 'x';
@@ -36,20 +37,20 @@ int print_hex(va_list a, para_t *para)
 int print_HEX(va_list a, para_t *para)
 {
 	unsigned long lo;
-       	int w =0;
+	int w = 0;
 	char *st;
-	
+
 	if (para->l_modi)
-		lo = (unsigned long)va_arg(ap, unsigned long);
+		lo = (unsigned long)va_arg(a, unsigned long);
 	else if (para->h_modi)
 		lo = (unsigned short int)va_arg(a, unsigned int);
 	else
 		lo = (unsigned int)va_arg(a, unsigned int);
 	st = convert(lo, 16, CONVERT_UNSIGNED, para);
 	if (para->hash_flag && lo)
-        {
-                *--st = 'x';
-                *--st = '0';
+	{
+		*--st = 'x';
+		*--st = '0';
 	}
 	para->unsign = 1;
 	return (w += print_number(st, para));
@@ -62,7 +63,7 @@ int print_HEX(va_list a, para_t *para)
  */
 int print_bin(va_list a, para_t *para)
 {
-	unsigned int o = va_arg(a,unsigned int);
+	unsigned int o = va_arg(a, unsigned int);
 	char *st = convert(o, 2, CONVERT_UNSIGNED, para);
 	int w = 0;
 
@@ -80,8 +81,8 @@ int print_bin(va_list a, para_t *para)
 int print_oct(va_list a, para_t *para)
 {
 	unsigned long lo;
-        int w = 0;
-        char *st;
+	int w = 0;
+	char *st;
 
 	if (para->l_modi)
 		lo = (unsigned long)va_arg(a, unsigned long);
@@ -89,7 +90,7 @@ int print_oct(va_list a, para_t *para)
 		lo = (unsigned short int)va_arg(a, unsigned int);
 	st = convert(lo, 8, CONVERT_UNSIGNED, para);
 	if (para->hash_flag && lo)
-		*--st ='0';
-	para->unsign =1;
+		*--st = '0';
+	para->unsign = 1;
 	return (w += print_number(st, para));
 }
