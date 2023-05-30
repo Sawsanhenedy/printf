@@ -126,5 +126,5 @@ char get_w(char *x, para_t *para, va_list a)
 	o = o * 10 + (*x++ - '0');
 	}
 para->w = o;
-return (x);
+return (*x);
 }

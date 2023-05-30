@@ -29,7 +29,8 @@ while (get_flag(p, &para))
 {
 p++;
 }
-p = get_w(p, &para, a);
+char c = get_w(p, &para, a);
+*p = c;
 p = get_precision(p, &para, a);
 if (get_modi(p, &para))
 p++;
