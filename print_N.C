@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * _isdigit - check
  * @f: char
@@ -5,7 +7,7 @@
  */
 int _isdigit(int f)
 {
-	return (f >= '0' &&f <= '9');
+	return (f >= '0' && f <= '9');
 }
 /**
  * _strlen - return
@@ -108,6 +110,6 @@ int numver_l(char *str, para_t *para)
 		o += _putchar(' '), j++;
 	o += _put(str);
 	while (j++ < para->w)
-		n += _putchar(pd_ch);
+		o += _putchar(pd_ch);
 	return (o);
 }
