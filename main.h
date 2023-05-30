@@ -36,8 +36,8 @@ unsigned int zero_flag : 1;
 unsigned int space_flag : 1;
 unsigned int h_modi : 1;
 unsigned int l_modi : 1;
-unsigned int w : 1;
-unsigned int pre : 1;
+unsigned int w;
+unsigned int pre;
 } para_t;
 /**
  * struct specifier - structure specifier
