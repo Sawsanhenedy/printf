@@ -35,10 +35,10 @@ str = "";
 if (ngv)
 {
 str++;
-j--;
+o--;
 }
 if (para->pre != UINT_MAX)
-while (j++ < para->pre)
+while (o++ < para->pre)
 *--str = '0';
 if (ngv)
 *--str = '-';

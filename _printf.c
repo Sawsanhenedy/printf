@@ -1,14 +1,10 @@
-#include"main.h"
+#include "main.h"
 /**
  * _printf - prints everything
  * @format: string's format
  * Return: printed string
  */
-int _printf(const char *format, ...);
-int get_print_func(char *x, va_list a, para_t *para);
-int get_modi(char *x, para_t *para);
-int (*get_speci(char *x))(va_list a, para_t *para);
-int print_convert(char *from, char *to, char *ex)
+int _printf(const char *format, ...)
 {
 int add = 0;
 va_list a;
