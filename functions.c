@@ -8,13 +8,13 @@
 int print_c(va_list a, para_t *para)
 {
 char p_c = ' ';
-unsigned int p = 1, add = 0, c = va_arg(a, int);
+unsigned int p = 1, add = 0, d = va_arg(a, int);
 if (para->minus_flag)
-add += _putchar(c);
+add += _putchar(d);
 while (p++ < para->w)
 add += _putchar(p_c);
 if (!para->minus_flag)
-add += _putchar(c);
+add += _putchar(d);
 return (add);
 }
 /**
