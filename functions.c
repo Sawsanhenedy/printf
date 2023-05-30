@@ -26,14 +26,13 @@ return (add);
 int print_int(va_list a, para_t *para)
 {
 long l;
-
 if (para->l_modi)
 l = va_arg(a, long);
 else if (para->h_modi)
 l = (short int)va_arg(a, int);
 else
 l = (int)va_arg(a, int);
-return (print_number(convert(1, 10, 0, para), para));
+return (print_number(convert(l, 10, 0, para), para));
 }
 /**
  * print_str - prints string

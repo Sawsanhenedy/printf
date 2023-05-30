@@ -9,6 +9,7 @@ int _printf(const char *format, ...)
 int add = 0;
 va_list a;
 char *p, *first;
+char c;
 para_t para = PARA_INIT;
 va_start(a, format);
 if (!format || (format[0] == '%' && !format[1]))
@@ -29,7 +30,7 @@ while (get_flag(p, &para))
 {
 p++;
 }
-char c = get_w(p, &para, a);
+c = get_w(p, &para, a);
 *p = c;
 p = get_precision(p, &para, a);
 if (get_modi(p, &para))
