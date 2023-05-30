@@ -9,8 +9,8 @@
 #define NULL_STRING "(null)"
 #define BUF_FLUSH -1
 #define OUTPUT_BUF_SIZE 1024
-#define CONVERT_UNSIGNED
-#define CONVERT_LOWERCASE
+#define CONVERT_UNSIGNED  1
+#define CONVERT_LOWERCASE 2
 /**
  * struct para - structure of parameters
  * @plus_flag: in case a plus_flag is specified
