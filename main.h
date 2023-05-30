@@ -81,7 +81,7 @@ int (*get_speci(char *x))(va_list a, para_t *para);
 int get_modi(char *x, para_t *para);
 int get_flag(char *x, para_t *para);
 int get_print_func(char *x, va_list a, para_t *para);
-int get_w(char *x, para_t *para, va_list a);
+char get_w(char *x, para_t *para, va_list a);
 /* print_numbers.c */
 int _isdigit(int f);
 int _strlen(char *d);
