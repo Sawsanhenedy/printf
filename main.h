@@ -48,7 +48,7 @@ unsigned int pre;
  */
 typedef struct specifier
 {
-char *speci;
+char *specifier;
 int (*f)(va_list, para_t *);
 } specifier_t;
 /*  _printf.c */

@@ -7,7 +7,7 @@
  */
 int (*get_speci(char *x))(va_list a, para_t *para)
 {
-	specifier_t speci[] = {
+	specifier_t specifier[] = {
 		{"c", print_c},
 		{"d", print_int},
 		{"i", print_int},
@@ -26,11 +26,11 @@ int (*get_speci(char *x))(va_list a, para_t *para)
 	};
 	int i = 0;
 
-	while (speci[i].speci)
+	while (specifier[i].specifier)
 	{
-		if (*x == speci[i].speci[0])
+		if (*x == specifier[i].specifier[0])
 		{
-			return (speci[i].f);
+			return (specifier[i].f);
 		}
 	i++;
 	}
