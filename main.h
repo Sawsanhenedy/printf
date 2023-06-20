@@ -1,4 +1,4 @@
-#ifndef MAIN_H
+#ifndef MAIN_
 #define MAIN_H
 #include<stdio.h>
 #include<stdlib.h>
@@ -36,6 +36,20 @@ __attribute__((unused)) int pre);
  * Return: 1 -> Success, 0 -> Error
  */
 int printc(va_list ar,
+__attribute__((unused)) int flg,
+__attribute__((unused)) int wdth,
+__attribute__((unused)) int sz,
+__attribute__((unused)) int pre);
+/**
+ * printpercent - integer to be printed
+ * @flg: integer
+ * @ar: va_list
+ * @sz: integer
+ * @wdth: integer
+ * @pre: integer
+ * Return: 1 -> Success, 0 -> Error
+ */
+int printpercent(va_list ar,
 __attribute__((unused)) int flg,
 __attribute__((unused)) int wdth,
 __attribute__((unused)) int sz,

@@ -20,7 +20,7 @@ write(1, &a, 1);
 return (1);
 }
 /**
- * printper - percent (&) to be printed
+ * printpercent - percent (&) to be printed
  * @flg: flag (integer)
  * @ar: (va_list) argument
  * @sz: (integer) size
@@ -28,7 +28,7 @@ return (1);
  * @pre: (integer) precision
  * Return: 1 -> success, 0 -> Error
  */
-int printper(va_list ar,
+int printpercent(va_list ar,
 __attribute__((unused)) int flg,
 __attribute__((unused)) int wdth,
 __attribute__((unused)) int sz,

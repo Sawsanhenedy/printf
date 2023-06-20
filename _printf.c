@@ -6,11 +6,10 @@
  */
 int _printf(const char *format, ...)
 {
-int add = 0;
 va_list ar;
 int flg = 0, sz = 0, pre = 0, wdth = 0;
 int a = 0, buff_ind = 0, pr_c = 0, pr = 0;
-char buf[BUFFER_SIZE];
+char buf[OUTPUT_BUF_SIZE];
 if (format == NULL)
 return (-1);
 va_start(ar, format);
@@ -20,7 +19,7 @@ if (format[a] != '%')
 {
 buf[buff_ind] = format[a];
 buff_ind++;
-if (buff_ind == BUFFER_SIZE - 1)
+if (buff_ind == OUTPUT_BUF_SIZE - 1)
 {
 if ((printbuf(buf, buff_ind)) <= 0)
 return (-1);
@@ -45,6 +44,7 @@ buff_ind = 0;
 a++;
 }
 if (buff_ind > 0)
+{
 if ((printbuf(buf, buff_ind)) <= 0)
 return (-1);
 }
@@ -88,9 +88,11 @@ __attribute__((unused)) int sz,
 __attribute__((unused)) int pre)
 {
 char sp[] = {'c', 's', '%'};
-int (*pr_f[]) (va_list, int, int) = {&printc, &prints, &printper};
+int (*pr_f[]) (va_list, int, int, int, int) = {&printc, &prints, &printpercent};
 int a;
 for (a = 0; sp[a] != '\0'; a++)
+{
+if (f[f_ind] == sp[a])
 {
 return (pr_f[a](ar, flg, wdth, sz, pre));
 }
