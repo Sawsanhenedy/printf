@@ -72,6 +72,9 @@ return (-1);
  * @sz: integer
  * @pre: integer
  * @wdth: integer
+ * @&printc: charchter to be printed
+ * @&prints: string to be printed
+ * @&printpercent: percent to be printed
  * Return: 1 -> Success, 0 -> Error
  */
 int printsp(const char *f, int f_ind, va_list ar,
