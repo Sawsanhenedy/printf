@@ -28,7 +28,7 @@ return (1);
  * @pre: (integer) precision
  * Return: 1 -> success, 0 -> Error
  */
-int printpercent(va_list ar,
+int printpercent(__attribute__((unused)) va_list ar,
 __attribute__((unused)) int flg,
 __attribute__((unused)) int wdth,
 __attribute__((unused)) int sz,

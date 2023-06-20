@@ -40,8 +40,8 @@ a++;
 if (buff_ind > 0)
 {
 va_end(ar);
-return (pr_c);
 }
+return (pr_c);
 }
 /**
  * printbuf - buffer's content to be printed
