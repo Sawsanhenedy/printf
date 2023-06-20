@@ -11,21 +11,76 @@
 #define OUTPUT_BUF_SIZE 1024
 #define CONVERT_UNSIGNED  1
 #define CONVERT_LOWERCASE 2
+/* Functions to be printed */
 /**
- * struct para - structure of parameters
- * @plus_flag: in case a plus_flag is specified
- * @minus_flag: in case a minus_flag is specified
- * @hash_flag: in case a hashtag_flag is specified
- * @unsign: for unsigned value
- * @zero_flag: in case a zero_flag is specified
- * @space_flag: in case a space_flag is specified
- * @h_modi: if short modifier is specified
- * @l_modi: if long modifier is specified
- * @w: specified width
- * @pre: specified precision
- * Description: everything is mentioned above
- * Return: everything is mentioned above
+ * prints - string to be printed
+ * @flg: flag (integer)
+ * @ar: argument (va_list)
+ * @sz: size (integer)
+ * @wdth: width (integer)
+ * @pre: precision (integer)
+ * Return: 1 -> Success, 0 -> Error
  */
+int prints(va_list ar,
+__attribute__((unused)) int flg,
+__attribute__((unused)) int wdth,
+__attribute__((unused)) int sz,
+__attribute__((unused)) int pre);
+/**
+ * printc - character to be printed
+ * @flg: flag (integer)
+ * @ar: (va_list) argument
+ * @sz: (integer) size
+ * @wdth: (integer) width
+ * @pre: (integer) precision
+ * Return: 1 -> Success, 0 -> Error
+ */
+int printc(va_list ar,
+__attribute__((unused)) int flg,
+__attribute__((unused)) int wdth,
+__attribute__((unused)) int sz,
+__attribute__((unused)) int pre);
+/**
+ * printint - integer to be printed
+ * @flg: integer
+ * @ar: va_list
+ * @sz: integer
+ * @wdth: integer
+ * @pre: integer
+ * Return: 1 -> Success, 0 -> Error
+ */
+int printint(va_list ar,
+__attribute__((unused)) int flg,
+__attribute__((unused)) int wdth,
+__attribute__((unused)) int sz,
+__attribute__((unused)) int pre);
+/**
+ * printbin - binary to be printed
+ * @flg: integer
+ * @ar: va_list
+ * @sz: integer
+ * @wdth: integer
+ * @pre: integer
+ * Return: 1 -> Success, 0 -> Error
+ */
+int printbin(va_list ar,
+__attribute__((unused)) int flg,
+__attribute__((unused)) int wdth,
+__attribute__((unused)) int sz,
+__attribute__((unused)) int pre);
+long int asgn(long int lnum, int sz);
+/* Specifier */
+int printsp(const char *f, int f_ind, va_list ar,
+__attribute__((unused)) int flg,
+__attribute__((unused)) int wdth,
+__attribute__((unused)) int sz,
+__attribute__((unused)) int pre);
+/*  _printf.c */
+int _printf(const char *format, ...);
+/* _putchar */
+int _putchar(int c);
+/* Buffer */
+int printbuf(char buf[], int l_ind);
 typedef struct para
 {
 unsigned int plus_flag : 1;
@@ -51,27 +106,6 @@ typedef struct specifier
 char *specifier;
 int (*f)(va_list, para_t *);
 } specifier_t;
-/*  _printf.c */
-int _printf(const char *format, ...);
-/* para.c */
-void init_para(para_t *para, va_list a);
-/* str_field.c */
-char *get_precision(char *q, para_t *para, va_list a);
-/* functions.c */
-int print_int(va_list a, para_t *para);
-int print_c(va_list a, para_t *para);
-int print_str(va_list a, para_t *para);
-int print_percent(va_list a, para_t *para);
-int print_S(va_list a, para_t *para);
-/* number_converter.c */
-int print_oct(va_list a, para_t *para);
-int print_bin(va_list a, para_t *para);
-int print_hex(va_list a, para_t *para);
-int print_HEX(va_list a, para_t *para);
-/* numbers.c */
-int print_unsigned(va_list a, para_t *para);
-int print_ad(va_list a, para_t *para);
-char *convert(long int n, int b, int flag, para_t *para);
 /* printers.c */
 int print_rev(va_list a, para_t *para);
 int print_rot(va_list a, para_t *para);
@@ -82,13 +116,4 @@ int get_modi(char *x, para_t *para);
 int get_flag(char *x, para_t *para);
 int get_print_func(char *x, va_list a, para_t *para);
 char get_w(char *x, para_t *para, va_list a);
-/* print_numbers.c */
-int _isdigit(int f);
-int _strlen(char *d);
-int print_number(char *str, para_t *para);
-int number_r(char *str, para_t *para);
-int numver_l(char *str, para_t *para);
-/* _put.c */
-int _put(char *str);
-int _putchar(int c);
 #endif /* MAIN_H */

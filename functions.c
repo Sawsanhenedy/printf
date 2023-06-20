@@ -1,116 +1,71 @@
 #include"main.h"
 /**
- * print_c - prints character
- * @a: argument pointer
- * @para: parameter structure
- * Return: character
+ * printc - character to be printed
+ * @flg: flag (integer)
+ * @ar: (va_list) argument
+ * @sz: (integer) size
+ * @wdth: (integer) width
+ * @pre: (integer) precision
+ * Return: 1 -> Success, 0 -> Error
  */
-int print_c(va_list a, para_t *para)
+int printc(va_list ar,
+__attribute__((unused)) int flg,
+__attribute__((unused)) int wdth,
+__attribute__((unused)) int sz,
+__attribute__((unused)) int pre)
 {
-char p_c = ' ';
-unsigned int p = 1, add = 0, d = va_arg(a, int);
-if (para->minus_flag)
-add += _putchar(d);
-while (p++ < para->w)
-add += _putchar(p_c);
-if (!para->minus_flag)
-add += _putchar(d);
-return (add);
+char a;
+a = (char) va_arg(ar, int);
+write(1, &a, 1);
+return (1);
 }
 /**
- * print_int - prints int
- * @a: argument pointer
- * @para: parameter structure
- * Return: int
+ * printper - percent (&) to be printed
+ * @flg: flag (integer)
+ * @ar: (va_list) argument
+ * @sz: (integer) size
+ * @wdth: (integer) width
+ * @pre: (integer) precision
+ * Return: 1 -> success, 0 -> Error
  */
-int print_int(va_list a, para_t *para)
+int printper(va_list ar,
+__attribute__((unused)) int flg,
+__attribute__((unused)) int wdth,
+__attribute__((unused)) int sz,
+__attribute__((unused)) int pre)
 {
-long l;
-if (para->l_modi)
-l = va_arg(a, long);
-else if (para->h_modi)
-l = (short int)va_arg(a, int);
-else
-l = (int)va_arg(a, int);
-return (print_number(convert(l, 10, 0, para), para));
+int pt;
+char a = '%';
+pt = write(1, &a, 1);
+return (pt);
 }
 /**
- * print_str - prints string
- * @a: argument pointer
- * @para: parameter structure
- * Return: string
+ * prints - string to be printed
+ * @flg: flag (integer)
+ * @ar: (va_list) argument
+ * @sz: (integer) size
+ * @wdth: (integer) width
+ * @pre: (integer) precision
+ * Return: 1 -> success, 0 -> Error
  */
-int print_str(va_list a, para_t *para)
+int prints(va_list ar,
+__attribute__((unused)) int flg,
+__attribute__((unused)) int wdth,
+__attribute__((unused)) int sz,
+__attribute__((unused)) int pre)
 {
-char *s = va_arg(a, char *), p_c = ' ';
-unsigned int p = 0, add = 0, f = 0, r;
-(void)para;
-switch ((int)(!s))
-case 1:
-s = NULL_STRING;
-r = p = _strlen(s);
-if (para->pre < p)
-r = p = para->pre;
-if (para->minus_flag)
+char *s;
+int pt_c = 0, a = 0, pt = 0;
+s = va_arg(ar, char *);
+if (s == NULL)
+return (-1);
+while (s[a] != '\0')
 {
-if (para->pre != UINT_MAX)
-for (f = 0; f < p; f++)
-add += _putchar(*s++);
-else
-add += _put(s);
+pt = write(1, &a, 1);
+if (pt < 0)
+return (-1);
+pt_c++;
+a++;
 }
-while (r++ < para->w)
-add += _putchar(p_c);
-if (!para->minus_flag)
-{
-if (para->pre != UINT_MAX)
-for (f = 0; f < p; f++)
-add += _putchar(*s++);
-else
-add += _put(s);
-}
-return (add);
-}
-/**
- * print_percent - prints percent
- * @a: argument pointer
- * @para: parameter structure
- * Return: percent
- */
-int print_percent(va_list a, para_t *para)
-{
-(void)a;
-(void)para;
-return (_putchar('%'));
-}
-/**
- * print_S - specifier customizer
- * @a: argument pointer
- * @para: parameter structure
- * Return: specifier
- */
-int print_S(va_list a, para_t *para)
-{
-char *s = va_arg(a, char *);
-char *hx;
-int add = 0;
-if ((int)(!s))
-return (_put(NULL_STRING));
-for (; *s; s++)
-{
-if ((*s > 0 && *s < 32) || *s >= 127)
-{
-add += _putchar('\\');
-add += _putchar('x');
-hx = convert(*s, 16, 0, para);
-if (!hx[1])
-add += _putchar('0');
-add += _put(hx);
-}
-else
-{
-add += _putchar(*s);
-}
-}
-return (add);
+return (pt_c);
 }
