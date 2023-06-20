@@ -7,8 +7,7 @@
 int _printf(const char *format, ...)
 {
 va_list ar;
-int flg = 0, sz = 0, pre = 0, wdth = 0;
-int a = 0, buff_ind = 0, pr_c = 0, pr = 0;
+int flg = 0, sz = 0, pre = 0, wdth = 0, a = 0, buff_ind = 0, pr_c = 0, pr = 0;
 char buf[OUTPUT_BUF_SIZE];
 if (format == NULL)
 return (-1);
@@ -19,7 +18,7 @@ if (format[a] != '%')
 {
 buf[buff_ind] = format[a];
 buff_ind++;
-if (buff_ind == OUTPUT_BUF_SIZE - 1)
+if (buff_ind == OUTPUT_BUF_SIZE - 1 || buff_ind > 0)
 {
 if ((printbuf(buf, buff_ind)) <= 0)
 return (-1);
@@ -27,13 +26,8 @@ buff_ind = 0;
 }
 pr_c++;
 }
-else
-{
 if (buff_ind > 0)
 {
-if ((printbuf(buf, buff_ind)) <= 0)
-return (-1);
-}
 pr = printsp(format, a + 1, ar, wdth, sz, pre, flg);
 if (pr <= 0)
 return (-1);
@@ -45,11 +39,9 @@ a++;
 }
 if (buff_ind > 0)
 {
-if ((printbuf(buf, buff_ind)) <= 0)
-return (-1);
-}
 va_end(ar);
 return (pr_c);
+}
 }
 /**
  * printbuf - buffer's content to be printed
@@ -75,6 +67,7 @@ return (-1);
  * printsp - specifier to be printed
  * @f: format (string)
  * @f_ind: last format index (integer)
+ * @ar: argument (integer)
  * @flg: integer
  * @sz: integer
  * @pre: integer
@@ -88,7 +81,8 @@ __attribute__((unused)) int sz,
 __attribute__((unused)) int pre)
 {
 char sp[] = {'c', 's', '%'};
-int (*pr_f[]) (va_list, int, int, int, int) = {&printc, &prints, &printpercent};
+int (*pr_f[]) (va_list, int, int, int, int) = {&printc, &prints,
+&printpercent};
 int a;
 for (a = 0; sp[a] != '\0'; a++)
 {
