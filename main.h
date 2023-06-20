@@ -4,8 +4,6 @@
 #include<unistd.h>
 #include<stdarg.h>
 #define OUTPUT_BUF_SIZE 1024
-#define CONVERT_UNSIGNED  1
-#define CONVERT_LOWERCASE 2
 /* Functions */
 int prints(va_list ar,
 __attribute__((unused)) int flg,
@@ -41,8 +39,6 @@ __attribute__((unused)) int sz,
 __attribute__((unused)) int pre);
 /*  _printf.c */
 int _printf(const char *format, ...);
-/* _putchar */
-int _putchar(int c);
 /* Buffer */
 int printbuf(char buf[], int l_ind);
 #endif /* MAIN_H */
