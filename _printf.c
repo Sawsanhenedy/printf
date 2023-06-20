@@ -83,9 +83,9 @@ __attribute__((unused)) int wdth,
 __attribute__((unused)) int sz,
 __attribute__((unused)) int pre)
 {
-char sp[] = {'c', 's', '%'};
+char sp[] = {'c', 's', '%', 'd', 'i'};
 int (*pr_f[]) (va_list, int, int, int, int) = {&printc, &prints,
-&printpercent};
+&printpercent, &printint, &printint};
 int a;
 for (a = 0; sp[a] != '\0'; a++)
 {
