@@ -5,42 +5,42 @@
  * Return: printed string
  */
 int _printf(const char *format, ...)
-{
-va_list ar;
+{ va_list ar;
 int flg = 0, sz = 0, pre = 0, wdth = 0, a = 0, buff_ind = 0, pr_c = 0, pr = 0;
-char buf[OUTPUT_BUF_SIZE];
+char buf[BUF_SZ];
 if (format == NULL)
 return (-1);
 va_start(ar, format);
 while (format[a] != '\0')
 {
 if (format[a] != '%')
-buf[buff_ind] = format[a];
+{ buf[buff_ind] = format[a];
 buff_ind++;
-if (buff_ind == OUTPUT_BUF_SIZE - 1 || buff_ind > 0
-&& (printbuf(buf, buff_ind) <= 0))
+if (buff_ind == BUF_SZ - 1)
 {
+if ((printbuf(buf, buff_ind)) <= 0)
 return (-1);
-buff_ind = 0;
-pr_c++;
-}
+buff_ind = 0; }
+pr_c++; }
+else
+{
 if (buff_ind > 0)
 {
+if ((printbuf(buf, buff_ind)) <= 0)
+return (-1); }
 pr = printsp(format, a + 1, ar, wdth, sz, pre, flg);
 if (pr <= 0)
 return (-1);
 pr_c += pr;
 a++;
-buff_ind = 0;
-}
-a++;
-}
+buff_ind = 0; }
+a++; }
 if (buff_ind > 0)
 {
+if ((printbuf(buf, buff_ind)) <= 0)
+return (-1); }
 va_end(ar);
-return (pr_c);
-}
-}
+return (pr_c); }
 /**
  * printbuf - buffer's content to be printed
  * @buf: buffer

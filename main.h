@@ -3,7 +3,7 @@
 #include<stdio.h>
 #include<unistd.h>
 #include<stdarg.h>
-#define OUTPUT_BUF_SIZE 1024
+#define BUF_SZ 1024
 /* Functions */
 int prints(va_list ar,
 __attribute__((unused)) int flg,
