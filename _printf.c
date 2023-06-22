@@ -18,7 +18,8 @@ if (format[a] != '%')
 buf[buff_ind] = format[a];
 buff_ind++;
 if (buff_ind == OUTPUT_BUF_SIZE - 1 || buff_ind > 0
-&& (printbuf(buf, buff_ind) <= 0)
+&& (printbuf(buf, buff_ind) <= 0))
+{
 return (-1);
 buff_ind = 0;
 pr_c++;
@@ -38,6 +39,7 @@ if (buff_ind > 0)
 {
 va_end(ar);
 return (pr_c);
+}
 }
 /**
  * printbuf - buffer's content to be printed
